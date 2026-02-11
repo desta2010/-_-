@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Десна Тесфайе | Академия отношений</title>
+    
+    <!-- Шрифты и иконки -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ===== ОСНОВНЫЕ СТИЛИ - 1-500 СТРОК ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Кастомный скролл */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #ff5252, #ffb347);
+        }
+        
+        /* Градиентные тексты */
+        .gradient-text {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradient 8s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 5px #ff6b6b, 0 0 10px #ff6b6b, 0 0 20px #ff6b6b; }
+            50% { box-shadow: 0 0 10px #feca57, 0 0 20px #feca57, 0 0 40px #feca57; }
+            100% { box-shadow: 0 0 5px #ff6b6b, 0 0 10px #ff6b6b, 0 0 20px #ff6b6b; }
+        }
+        
+        /* Контейнеры */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Фоновые эффекты */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a, #0a0a0a);
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 107, 107, 0.3);
+            border-radius: 50%;
+            animation: float 8s infinite;
+        }
+        
+        .glow-circle {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,107,107,0.1) 0%, rgba(10,10,10,0) 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(60px);
+            z-index: -1;
+            animation: pulse 8s infinite;
+        }
+        
+        /* ===== ХЕДЕР - 500-700 СТРОК ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 107, 107, 0.3);
+            transition: 0.4s;
+        }
+        
+        header.scrolled {
+            padding: 15px 50px;
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 5px 30px rgba(255, 107, 107, 0.2);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .logo span {
+            color: #ff6b6b;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        
+        /* ===== ГЕРОЙ СЕКЦИЯ - 700-1000 СТРОК ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .hero-text {
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #ff6b6b;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        .hero-quote {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #feca57;
+            position: relative;
+            padding-left: 30px;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        /* Место для фото Десны Тесфайе - вставьте файл desna.jpg */
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .desna-photo {
+            width: 500px;
+            height: 500px;
+            border-radius: 30px;
+            object-fit: cover;
+            border: 5px solid rgba(255, 107, 107, 0.5);
+            box-shadow: 0 20px 80px rgba(255, 107, 107, 0.4);
+            transition: 0.5s;
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .desna-photo:hover {
+            transform: scale(1.05);
+            border-color: #feca57;
+            box-shadow: 0 30px 100px rgba(254, 202, 87, 0.5);
+        }
+        
+        .photo-frame {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            border-radius: 30px;
+            top: -20px;
+            left: -20px;
+            z-index: 1;
+        }
+        
+        .photo-frame2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 2px solid rgba(254, 202, 87, 0.3);
+            border-radius: 30px;
+            bottom: -20px;
+            right: -20px;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+            font-size: 40px;
+            color: white;
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+            animation: rotate 20s linear infinite;
+            z-index: 10;
+        }
+        
+        .hero-badge span {
+            font-size: 16px;
+            display: block;
+            text-align: center;
+            animation: rotate 20s linear infinite reverse;
+        }
+        
+        /* ===== КНОПКИ - 1000-1200 СТРОК ===== */
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.6s;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.6);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ff6b6b;
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: #ff6b6b;
+            color: #fff;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        /* ===== СЕКЦИЯ ФИРЕМАНЯ - 1200-1400 СТРОК ===== */
+        .firemanya-section {
+            background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(254,202,87,0.1) 100%);
+            border-radius: 30px;
+            padding: 80px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .firemanya-title {
+            font-size: 180px;
+            font-weight: 900;
+            text-align: center;
+            line-height: 1;
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradient 5s ease infinite;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 20px;
+        }
+        
+        .firemanya-quote {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            color: #fff;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 20px rgba(255,107,107,0.5);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .firemanya-author {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 24px;
+            color: #feca57;
+            font-weight: 600;
+        }
+        
+        .firemanya-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255,107,107,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(254,202,87,0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        /* ===== КУРСЫ - 1400-1800 СТРОК ===== */
+        .courses-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 60px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .section-subtitle {
+            font-size: 24px;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .course-card {
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            transition: 0.5s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-20px);
+            border-color: #ff6b6b;
+            box-shadow: 0 30px 60px rgba(255, 107, 107, 0.3);
+            background: rgba(40, 40, 40, 0.9);
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #fff;
+            animation: pulse 2s infinite;
+        }
+        
+        .course-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+        
+        .course-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .course-price {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #feca57;
+        }
+        
+        .course-price span {
+            font-size: 20px;
+            font-weight: 400;
+            color: #ccc;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 30px 0;
+            flex: 1;
+        }
+        
+        .course-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ddd;
+        }
+        
+        .course-features i {
+            color: #ff6b6b;
+        }
+        
+        .course-footer {
+            margin-top: auto;
+        }
+        
+        .old-price {
+            font-size: 24px;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 15px;
+        }
+        
+        /* ===== ЦИТАТЫ АРСЕНА МАРКАРЯНА - 1800-2100 СТРОК ===== */
+        .arsen-section {
+            background: linear-gradient(135deg, #1a1a1a, #2a1a1a);
+            border-radius: 50px;
+            padding: 80px;
+            margin: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .arsen-title {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 50px;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .arsen-title span {
+            color: #ff6b6b;
+        }
+        
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .quote-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 5px solid #ff6b6b;
+            transition: 0.4s;
+        }
+        
+        .quote-card:hover {
+            background: rgba(255, 107, 107, 0.1);
+            transform: scale(1.05);
+            border-left-color: #feca57;
+        }
+        
+        .quote-text {
+            font-size: 18px;
+            line-height: 1.8;
+            font-style: italic;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        .quote-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .quote-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        .quote-author h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #feca57;
+        }
+        
+        .quote-author p {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* ===== ПАКЕТЫ КУРСОВ - 2100-2400 СТРОК ===== */
+        .pricing-section {
+            padding: 100px 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: rgba(30, 30, 30, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            transition: 0.5s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-20px);
+            border-color: #ff6b6b;
+            box-shadow: 0 30px 60px rgba(255, 107, 107, 0.3);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid #ff6b6b;
+            transform: scale(1.05);
+            background: rgba(40, 40, 40, 0.95);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.07);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #fff;
+        }
+        
+        .pricing-icon {
+            font-size: 60px;
+            color: #ff6b6b;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-name {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-price {
+            font-size: 64px;
+            font-weight: 900;
+            color: #feca57;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-price span {
+            font-size: 20px;
+            color: #ccc;
+            font-weight: 400;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 15px;
+            color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .pricing-features i {
+            color: #ff6b6b;
+        }
+        
+        .pricing-features i.fa-check {
+            color: #4CAF50;
+        }
+        
+        .pricing-features i.fa-times {
+            color: #f44336;
+        }
+        
+        /* ===== ОТЗЫВЫ - 2400-2600 СТРОК ===== */
+        .testimonials-section {
+            background: linear-gradient(135deg, #1a1a1a, #2a1a1a);
+            border-radius: 50px;
+            padding: 80px;
+            margin: 100px 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 30px;
+            position: relative;
+        }
+        
+        .testimonial-quote {
+            font-size: 60px;
+            color: rgba(255, 107, 107, 0.3);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 30px 0;
+            color: #fff;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: 900;
+            color: #fff;
+        }
+        
+        .testimonial-info h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #feca57;
+        }
+        
+        .testimonial-info p {
+            color: #999;
+        }
+        
+        .testimonial-stars {
+            color: #ff6b6b;
+            margin-top: 10px;
+        }
+        
+        /* ===== БЛОГ/СТАТЬИ - 2600-2800 СТРОК ===== */
+        .blog-section {
+            padding: 100px 0;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .blog-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 30px;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+        }
+        
+        .blog-image {
+            height: 250px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-image i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .blog-content {
+            padding: 30px;
+        }
+        
+        .blog-date {
+            color: #ff6b6b;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .blog-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .blog-excerpt {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .blog-link {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .blog-link:hover {
+            gap: 15px;
+        }
+        
+        /* ===== ПРЕИМУЩЕСТВА - 2800-3000 СТРОК ===== */
+        .benefits-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            transition: 0.4s;
+        }
+        
+        .benefit-item:hover {
+            background: rgba(255, 107, 107, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .benefit-icon {
+            font-size: 50px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .benefit-text {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        /* ===== ФОРМА ЗАПИСИ - 3000-3200 СТРОК ===== */
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            border-radius: 50px;
+            padding: 80px;
+            margin: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-title {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .cta-text {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        
+        .cta-input {
+            flex: 1;
+            padding: 20px 30px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: 0.3s;
+        }
+        
+        .cta-input:focus {
+            outline: none;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+        
+        .cta-btn {
+            padding: 20px 40px;
+            background: #0a0a0a;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: #fff;
+            color: #0a0a0a;
+        }
+        
+        .cta-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        /* ===== ФУТЕР - 3200-3400 СТРОК ===== */
+        footer {
+            background: #0a0a0a;
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: #ff6b6b;
+        }
+        
+        .footer-about {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+        
+        .social-link:hover {
+            background: #ff6b6b;
+            transform: translateY(-5px);
+        }
+        
+        .footer-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: #ff6b6b;
+            padding-left: 10px;
+        }
+        
+        .footer-contact {
+            list-style: none;
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .footer-contact i {
+            color: #ff6b6b;
+            font-size: 18px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 107, 107, 0.3);
+            color: #999;
+        }
+        
+        /* ===== АДАПТИВНОСТЬ - 3400-3600 СТРОК ===== */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 56px;
+            }
+            
+            .firemanya-title {
+                font-size: 120px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-image {
+                order: -1;
+            }
+            
+            .hero-quote {
+                border-left: none;
+                padding-left: 0;
+            }
+            
+            .btn-group {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .firemanya-title {
+                font-size: 80px;
+            }
+            
+            .firemanya-quote {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 48px;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .cta-form {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero-title {
+                font-size: 42px;
+            }
+            
+            .desna-photo,
+            .photo-frame,
+            .photo-frame2 {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .hero-badge {
+                width: 80px;
+                height: 80px;
+                font-size: 24px;
+            }
+            
+            .firemanya-title {
+                font-size: 60px;
+                letter-spacing: 10px;
+            }
+            
+            .firemanya-quote {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .courses-grid,
+            .pricing-grid,
+            .quotes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-title {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .desna-photo,
+            .photo-frame,
+            .photo-frame2 {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .firemanya-title {
+                font-size: 40px;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+        }
+        
+        /* ===== ДОПОЛНИТЕЛЬНЫЕ ЭФФЕКТЫ - 3600-3800 СТРОК ===== */
+        .glitch-text {
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+        
+        .neon-border {
+            animation: neonPulse 3s infinite;
+        }
+        
+        .hover-rotate {
+            transition: 0.5s;
+        }
+        
+        .hover-rotate:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+        
+        .hover-scale {
+            transition: 0.4s;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.2);
+        }
+        
+        /* ===== КУРСЫ ДЕСНЫ ТЕСФАЙЕ - 3800-4000 СТРОК ===== */
+        .course-level {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255, 107, 107, 0.2);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+        
+        .course-modules {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+        
+        .module-item i {
+            color: #feca57;
+        }
+        
+        .course-tag {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            padding: 10px 20px;
+            background: rgba(255, 107, 107, 0.2);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.5);
+        }
+        
+        .course-bonus {
+            background: rgba(254, 202, 87, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #feca57;
+        }
+        
+        .bonus-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #feca57;
+            margin-bottom: 10px;
+        }
+        
+        /* ===== АНИМАЦИИ ЗАГРУЗКИ - 4000-4100 СТРОК ===== */
+        .loading-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 1s;
+        }
+        
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 5px solid rgba(255, 107, 107, 0.3);
+            border-top: 5px solid #ff6b6b;
+            border-right: 5px solid #feca57;
+            border-radius: 50%;
+            animation: rotate 1s linear infinite;
+        }
+        
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Анимация загрузки -->
+    <div id="loading" class="loading-animation">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Фоновые частицы -->
+    <div class="bg-particles">
+        <div class="particle" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 20%; left: 80%; animation-delay: 1s;"></div>
+        <div class="particle" style="top: 50%; left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 70%; left: 70%; animation-delay: 3s;"></div>
+        <div class="particle" style="top: 90%; left: 20%; animation-delay: 4s;"></div>
+        <div class="particle" style="top: 30%; left: 90%; animation-delay: 5s;"></div>
+        <div class="particle" style="top: 60%; left: 40%; animation-delay: 6s;"></div>
+        <div class="particle" style="top: 80%; left: 60%; animation-delay: 7s;"></div>
+    </div>
+
+    <!-- Хедер -->
+    <header id="header">
+        <div class="logo">ДЕСНА<span>ТЕСФАЙЕ</span></div>
+        <div class="nav-links">
+            <a href="#hero">Главная</a>
+            <a href="#courses">Курсы</a>
+            <a href="#arsen">Мудрость</a>
+            <a href="#pricing">Цены</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#contact">Контакты</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- ГЕРОЙ СЕКЦИЯ - ФОТО ДЕСНЫ ТЕСФАЙЕ -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-subtitle">⚡ ОСНОВАТЕЛЬ АКАДЕМИИ ОТНОШЕНИЙ ⚡</div>
+                    <h1 class="hero-title">ДЕСНА <span class="gradient-text">ТЕСФАЙЕ</span></h1>
+                    <div class="hero-quote">
+                        "ФИРЕМАНЯ — ЭТО НЕ ПРОСТО СЛОВО, ЭТО СОСТОЯНИЕ ДУШИ"
+                    </div>
+                    <p class="hero-description">
+                        Я создал систему, которая изменила жизнь 50,000+ мужчин. 
+                        Перестань быть "хорошим парнем". Стань тем, кого выбирают.
+                        Забудь о стеснении, страхе отказа и неуверенности.
+                    </p>
+                    <div class="btn-group">
+                        <a href="#courses" class="btn">НАЧАТЬ ПУТЬ</a>
+                        <a href="#pricing" class="btn btn-outline">ВЫБРАТЬ КУРС</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- ВСТАВЬТЕ ФОТО ДЕСНЫ ТЕСФАЙЕ СЮДА -->
+                    <!-- Сохраните изображение как desna.jpg в той же папке -->
+                    <img src="desna.jpg" alt="Десна Тесфайе" class="desna-photo" 
+                         onerror="this.src='https://via.placeholder.com/500x500/ff6b6b/fff?text=ДЕСНА+ТЕСФАЙЕ'">
+                    <div class="photo-frame"></div>
+                    <div class="photo-frame2"></div>
+                    <div class="hero-badge">
+                        <span>🔥<br>VIP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="glow-circle"></div>
+    </section>
+
+    <!-- СЕКЦИЯ ФИРЕМАНЯ -->
+    <div class="container">
+        <div class="firemanya-section">
+            <div class="firemanya-bg"></div>
+            <h1 class="firemanya-title">ФИРЕМАНЯ</h1>
+            <div class="firemanya-quote">
+                "Ты должен гореть внутри. Фиреманя — это когда твой внутренний огонь 
+                ярче любых внешних обстоятельств. Это состояние, когда ты 
+                принимаешь себя и излучаешь уверенность."
+            </div>
+            <div class="firemanya-author">
+                — Десна Тесфайе
+            </div>
+        </div>
+    </div>
+
+    <!-- КУРСЫ ДЕСНЫ ТЕСФАЙЕ -->
+    <section id="courses" class="section">
+        <div class="container">
+            <div class="courses-header">
+                <h2 class="section-title">🔥 КУРСЫ <span class="gradient-text">ДЕСНЫ</span></h2>
+                <p class="section-subtitle">
+                    Выбери свою трансформацию. Каждый курс — это пошаговая система 
+                    изменения твоего мышления и поведения.
+                </p>
+            </div>
+
+            <div class="courses-grid">
+                <!-- Курс 1: Фиреманя Базовый -->
+                <div class="course-card">
+                    <div class="course-tag">⭐ СТАРТ</div>
+                    <div class="course-badge">-50%</div>
+                    <div class="course-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="course-level">НАЧАЛЬНЫЙ УРОВЕНЬ</div>
+                    <h3 class="course-title">ФИРЕМАНЯ БАЗОВЫЙ</h3>
+                    <div class="course-price">
+                        9,900₽ <span>19,900₽</span>
+                    </div>
+                    <ul class="course-features">
+                        <li><i class="fas fa-check"></i> 10 модулей</li>
+                        <li><i class="fas fa-check"></i> 50 видео-уроков</li>
+                        <li><i class="fas fa-check"></i> Разбор страха отказа</li>
+                        <li><i class="fas fa-check"></i> Язык тела и голос</li>
+                        <li><i class="fas fa-check"></i> Первое свидание</li>
+                        <li><i class="fas fa-check"></i> Чат поддержки</li>
+                    </ul>
+                    <div class="course-bonus">
+                        <div class="bonus-title">🎁 БОНУС:</div>
+                        <div>Гайд "10 фраз для знакомства"</div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn btn-full">ЗАПИСАТЬСЯ</a>
+                    </div>
+                </div>
+
+                <!-- Курс 2: Магнит (Самый популярный) -->
+                <div class="course-card" style="border: 2px solid #feca57; transform: scale(1.05);">
+                    <div class="course-tag" style="background: #feca57; color: #000;">🔥 ХИТ</div>
+                    <div class="course-badge" style="background: linear-gradient(45deg, #feca57, #ff6b6b);">-40%</div>
+                    <div class="course-icon">
+                        <i class="fas fa-magnet"></i>
+                    </div>
+                    <div class="course-level" style="color: #feca57;">СРЕДНИЙ УРОВЕНЬ</div>
+                    <h3 class="course-title">МАГНИТ</h3>
+                    <div class="course-price">
+                        19,900₽ <span>29,900₽</span>
+                    </div>
+                    <ul class="course-features">
+                        <li><i class="fas fa-check"></i> 20 модулей</li>
+                        <li><i class="fas fa-check"></i> 100+ видео-уроков</li>
+                        <li><i class="fas fa-check"></i> Психология влияния</li>
+                        <li><i class="fas fa-check"></i> Игры разума</li>
+                        <li><i class="fas fa-check"></i> Удержание интереса</li>
+                        <li><i class="fas fa-check"></i> Индивидуальный разбор</li>
+                        <li><i class="fas fa-check"></i> 3 онлайн-встречи</li>
+                    </ul>
+                    <div class="course-bonus">
+                        <div class="bonus-title">🎁 БОНУСЫ:</div>
+                        <div>• Книга "Искусство соблазнения"</div>
+                        <div>• Доступ к закрытому клубу</div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn">ВЫБРАТЬ ХИТ</a>
+                    </div>
+                </div>
+
+                <!-- Курс 3: Альфа-протокол -->
+                <div class="course-card">
+                    <div class="course-tag">💎 VIP</div>
+                    <div class="course-badge">VIP</div>
+                    <div class="course-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="course-level">ПРОДВИНУТЫЙ</div>
+                    <h3 class="course-title">АЛЬФА-ПРОТОКОЛ</h3>
+                    <div class="course-price">
+                        49,900₽ <span>79,900₽</span>
+                    </div>
+                    <ul class="course-features">
+                        <li><i class="fas fa-check"></i> 30 модулей</li>
+                        <li><i class="fas fa-check"></i> 200+ видео-уроков</li>
+                        <li><i class="fas fa-check"></i> Личные консультации</li>
+                        <li><i class="fas fa-check"></i> Полное погружение</li>
+                        <li><i class="fas fa-check"></i> Работа с подсознанием</li>
+                        <li><i class="fas fa-check"></i> НЛП-техники</li>
+                        <li><i class="fas fa-check"></i> Закрытые вебинары</li>
+                        <li><i class="fas fa-check"></i> Сертификат</li>
+                    </ul>
+                    <div class="course-bonus">
+                        <div class="bonus-title">🎁 VIP-БОНУСЫ:</div>
+                        <div>• Личная встреча с Десной</div>
+                        <div>• Доступ навсегда</div>
+                        <div>• Закрытый VIP-чат</div>
+                    </div>
+                    <div class="course-footer">
+                        <a href="#" class="btn btn-full">СТАТЬ VIP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЦИТАТЫ АРСЕНА МАРКАРЯНА -->
+    <section id="arsen" class="section">
+        <div class="container">
+            <div class="arsen-section">
+                <h2 class="arsen-title">🎯 МУДРОСТЬ <span>АРСЕНА МАРКАРЯНА</span></h2>
+                
+                <div class="quotes-grid">
+                    <!-- Цитата 1 -->
+                    <div class="quote-card">
+                        <div class="quote-text">
+                            "Женщина - это отражение мужчины. Если ты уверен в себе, 
+                            она будет чувствовать себя с тобой в безопасности. 
+                            Если ты сомневаешься, она будет сомневаться в тебе."
+                        </div>
+                        <div class="quote-author">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, #ff6b6b, #feca57); display: flex; justify-content: center; align-items: center;">
+                                <i class="fas fa-user" style="color: white; font-size: 24px;"></i>
+                            </div>
+                            <div>
+                                <h4>Арсен Маркарян</h4>
+                                <p>Психолог отношений</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Цитата 2 -->
+                    <div class="quote-card">
+                        <div class="quote-text">
+                            "Не пытайся казаться кем-то другим. Будь лучшей версией себя. 
+                            Женщины чувствуют фальшь за километр. Твоя сила - в твоей аутентичности."
+                        </div>
+                        <div class="quote-author">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, #ff6b6b, #feca57); display: flex; justify-content: center; align-items: center;">
+                                <i class="fas fa-user" style="color: white; font-size: 24px;"></i>
+                            </div>
+                            <div>
+                                <h4>Арсен Маркарян</h4>
+                                <p>Эксперт по отношениям</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Цитата 3 -->
+                    <div class="quote-card">
+                        <div class="quote-text">
+                            "Страх отказа - это просто программа в твоей голове. 
+                            Перепиши её. Каждое 'нет' приближает тебя к твоему 'да'. 
+                            Не бойся ошибок, бойся бездействия."
+                        </div>
+                        <div class="quote-author">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, #ff6b6b, #feca57); display: flex; justify-content: center; align-items: center;">
+                                <i class="fas fa-user" style="color: white; font-size: 24px;"></i>
+                            </div>
+                            <div>
+                                <h4>Арсен Маркарян</h4>
+                                <p>Тренер личностного роста</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Цитата 4 -->
+                    <div class="quote-card">
+                        <div class="quote-text">
+                            "Уверенность - это не отсутствие страха, это способность 
+                            действовать несмотря на страх. Каждый раз, когда ты 
+                            преодолеваешь себя, ты становишься сильнее."
+                        </div>
+                        <div class="quote-author">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, #ff6b6b, #feca57); display: flex; justify-content: center; align-items: center;">
+                                <i class="fas fa-user" style="color: white; font-size: 24px;"></i>
+                            </div>
+                            <div>
+                                <h4>Арсен Маркарян</h4>
+                                <p>Автор методик</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Цитата 5 -->
+                    <div class="quote-card">
+                        <div class="quote-text">
+                            "Отношения - это не игра, где нужно победить. 
+                            Это танец, где нужно чувствовать партнёра. 
+                            Учись слышать, а не только говорить."
+                        </div>
+                        <div class="quote-author">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, #ff6b6b, #feca57); display: flex; justify-content: center; align-items: center;">
+                                <i class="fas fa-user" style="color: white; font-size: 24px;"></i>
+                            </div>
+                            <div>
+                                <h4>Арсен Маркарян</h4>
+                                <p>Психолог</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Цитата 6 -->
+                    <div class="quote-card">
+                        <div class="quote-text">
+                            "Ты не можешь изменить прошлое, но ты можешь 
+                            изменить своё отношение к нему. Прости себя, 
+                            отпусти обиды и двигайся дальше."
+                        </div>
+                        <div class="quote-author">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, #ff6b6b, #feca57); display: flex; justify-content: center; align-items: center;">
+                                <i class="fas fa-user" style="color: white; font-size: 24px;"></i>
+                            </div>
+                            <div>
+                                <h4>Арсен Маркарян</h4>
+                                <p>Коуч</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПАКЕТЫ КУРСОВ (ЦЕНЫ) -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="courses-header">
+                <h2 class="section-title">💰 ВЫБЕРИ <span class="gradient-text">СВОЙ ПАКЕТ</span></h2>
+                <p class="section-subtitle">
+                    Инвестируй в себя сегодня. Результаты, которые останутся с тобой на всю жизнь.
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Пакет Стандарт -->
+                <div class="pricing-card">
+                    <div class="pricing-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="pricing-name">СТАНДАРТ</h3>
+                    <div class="pricing-price">
+                        19,900₽ <span>/мес</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Доступ к 3 курсам</li>
+                        <li><i class="fas fa-check"></i> Обновления контента</li>
+                        <li><i class="fas fa-check"></i> Чат студентов</li>
+                        <li><i class="fas fa-times"></i> Личные консультации</li>
+                        <li><i class="fas fa-times"></i> VIP-мероприятия</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline">ВЫБРАТЬ</a>
+                </div>
+
+                <!-- Пакет Премиум (Популярный) -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">🔥 САМЫЙ ПОПУЛЯРНЫЙ</div>
+                    <div class="pricing-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="pricing-name">ПРЕМИУМ</h3>
+                    <div class="pricing-price">
+                        49,900₽ <span>/мес</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Доступ ко всем курсам</li>
+                        <li><i class="fas fa-check"></i> Обновления контента</li>
+                        <li><i class="fas fa-check"></i> Закрытый VIP-чат</li>
+                        <li><i class="fas fa-check"></i> 2 консультации в месяц</li>
+                        <li><i class="fas fa-check"></i> Вебинары с Десной</li>
+                        <li><i class="fas fa-check"></i> Доступ к архиву</li>
+                    </ul>
+                    <a href="#" class="btn">ВЫБРАТЬ ПРЕМИУМ</a>
+                </div>
+
+                <!-- Пакет VIP -->
+                <div class="pricing-card">
+                    <div class="pricing-icon">
+                        <i class="fas fa-diamond"></i>
+                    </div>
+                    <h3 class="pricing-name">VIP НАВСЕГДА</h3>
+                    <div class="pricing-price">
+                        199,900₽ <span>разово</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Пожизненный доступ</li>
+                        <li><i class="fas fa-check"></i> Все курсы и обновления</li>
+                        <li><i class="fas fa-check"></i> Личный куратор</li>
+                        <li><i class="fas fa-check"></i> 10 консультаций</li>
+                        <li><i class="fas fa-check"></i> Встреча с Десной</li>
+                        <li><i class="fas fa-check"></i> Именной сертификат</li>
+                        <li><i class="fas fa-check"></i> Доступ к закрытым ивентам</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline">СТАТЬ VIP</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section id="reviews" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; color: #fff;">❤️ ОТЗЫВЫ УЧЕНИКОВ</h2>
+            <div class="testimonials-grid">
+                <!-- Отзыв 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "До курса 'Фиреманя' я был неуверенным в себе. Боялся подойти, 
+                        начинал мямлить. После 2 месяцев - я другой человек. 
+                        У меня появилась девушка мечты. Десна, спасибо!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <span>А</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Александр, 28 лет</h4>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Отзыв 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "Прошел 'Магнит' и 'Альфа-протокол'. Изменилось всё: 
+                        карьера, отношения, окружение. Перестал быть удобным для всех. 
+                        Начал жить для себя. Спасибо за перезагрузку сознания!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <span>Д</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Дмитрий, 34 года</h4>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Отзыв 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "Фиреманя - это не просто курс, это философия. 
+                        Я перестал искать одобрения, начал действовать. 
+                        Результат: 3 свидания за неделю. Десна, ты лучший!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <span>М</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Максим, 25 лет</h4>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРЕИМУЩЕСТВА -->
+    <div class="container">
+        <div class="benefits-section">
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="benefit-title">МГНОВЕННЫЙ ДОСТУП</h3>
+                <p class="benefit-text">
+                    После оплаты ты сразу получаешь доступ ко всем материалам курса. 
+                    Начинай заниматься прямо сейчас.
+                </p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <h3 class="benefit-title">ПОЖИЗНЕННО</h3>
+                <p class="benefit-text">
+                    Доступ к курсам остается с тобой навсегда. 
+                    Пересматривай уроки в любое время.
+                </p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="benefit-title">СООБЩЕСТВО</h3>
+                <p class="benefit-text">
+                    Тысячи учеников по всему СНГ. Общайся, делись опытом, 
+                    находи единомышленников.
+                </p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="benefit-title">ГАРАНТИЯ</h3>
+                <p class="benefit-text">
+                    14 дней на возврат. Если курс тебе не подойдет - 
+                    вернем деньги без вопросов.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA ФОРМА -->
+    <div class="container">
+        <div class="cta-section">
+            <div class="cta-particles"></div>
+            <h2 class="cta-title">ГОТОВ ИЗМЕНИТЬ СВОЮ ЖИЗНЬ?</h2>
+            <p class="cta-text">
+                Оставь заявку прямо сейчас и получи гайд "10 фраз для знакомства" 
+                в подарок + скидку 20% на первый курс
+            </p>
+            <div class="cta-form">
+                <input type="email" class="cta-input" placeholder="Введи свой email">
+                <button class="cta-btn">НАЧАТЬ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОГ/СТАТЬИ -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="courses-header">
+                <h2 class="section-title">📝 БЛОГ <span class="gradient-text">ДЕСНЫ</span></h2>
+                <p class="section-subtitle">
+                    Мысли, инсайты, философия. Только самое важное.
+                </p>
+            </div>
+
+            <div class="blog-grid">
+                <!-- Статья 1 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">15 Марта 2024</div>
+                        <h3 class="blog-title">Что такое ФИРЕМАНЯ на самом деле?</h3>
+                        <p class="blog-excerpt">
+                            Многие спрашивают: "Десна, что значит это слово?". 
+                            Отвечаю. Фиреманя - это состояние, когда ты...
+                        </p>
+                        <a href="#" class="blog-link">
+                            Читать дальше <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Статья 2 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">10 Марта 2024</div>
+                        <h3 class="blog-title">5 ошибок на первом свидании</h3>
+                        <p class="blog-excerpt">
+                            Почему 90% мужчин проваливают первое свидание? 
+                            Разбираем главные ошибки и как их избежать...
+                        </p>
+                        <a href="#" class="blog-link">
+                            Читать дальше <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Статья 3 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">5 Марта 2024</div>
+                        <h3 class="blog-title">Как перестать быть "хорошим парнем"</h3>
+                        <p class="blog-excerpt">
+                            Ты удобный? Тобой пользуются? Время это менять. 
+                            3 шага к здоровому эгоизму...
+                        </p>
+                        <a href="#" class="blog-link">
+                            Читать дальше <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        ДЕСНА<span>ТЕСФАЙЕ</span>
+                    </div>
+                    <p class="footer-about">
+                        Академия отношений №1 в СНГ. <br>
+                        Более 50,000 учеников. <br>
+                        7 лет трансформаций.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">КУРСЫ</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Фиреманя Базовый</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Магнит</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Альфа-протокол</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> VIP-наставничество</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">ИНФОРМАЦИЯ</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> О Десне</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Отзывы</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Блог</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">КОНТАКТЫ</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-envelope"></i> info@desna-tesfaye.ru</li>
+                        <li><i class="fas fa-phone"></i> 8 (800) 123-45-67</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Арбат, 1</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Десна Тесфайе. Все права защищены.</p>
+                <p style="margin-top: 10px; font-size: 14px;">
+                    "Фиреманя" - зарегистрированный товарный знак.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- СКРИПТЫ -->
+    <script>
+        // Анимация загрузки
+        window.addEventListener('load', function() {
+            document.getElementById('loading').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+            }, 1000);
+        });
+
+        // Хедер при скролле
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Плавный скролл к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Мобильное меню
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Анимация появления элементов при скролле
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.course-card, .quote-card, .pricing-card, .benefit-item');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Инициализация стилей для анимации
+        document.querySelectorAll('.course-card, .quote-card, .pricing-card, .benefit-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Генерация частиц
+        function createParticles() {
+            const container = document.querySelector('.bg-particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.width = Math.random() * 3 + 1 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Обработка формы
+        document.querySelector('.cta-btn').addEventListener('click', function() {
+            const email = document.querySelector('.cta-input').value;
+            if (email) {
+                alert(`Спасибо! Гайд отправлен на ${email}\nПроверь почту через 5 минут`);
+                document.querySelector('.cta-input').value = '';
+            } else {
+                alert('Пожалуйста, введи email');
+            }
+        });
+
+        // Кнопки курсов
+        document.querySelectorAll('.course-footer .btn, .pricing-card .btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const courseName = this.closest('.course-card, .pricing-card')?.querySelector('.course-title, .pricing-name')?.textContent || 'Курс';
+                alert(`✅ Заявка на "${courseName}" отправлена!\nМенеджер свяжется с вами в течение 15 минут.`);
+            });
+        });
+    </script>
+
+    <!-- Дополнительный JavaScript для более плавной анимации -->
+    <script>
+        // Параллакс эффект
+        document.addEventListener('mousemove', function(e) {
+            const moveX = (e.clientX / window.innerWidth - 0.5) * 20;
+            const moveY = (e.clientY / window.innerHeight - 0.5) * 20;
+            
+            const heroImage = document.querySelector('.desna-photo');
+            if (heroImage) {
+                heroImage.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+
+        // Счетчик для цен
+        let prices = document.querySelectorAll('.course-price, .pricing-price');
+        prices.forEach(price => {
+            price.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.transition = '0.3s';
+            });
+            price.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Динамический год в футере
+        document.querySelector('.footer-bottom p').innerHTML = 
+            `© ${new Date().getFullYear()} Десна Тесфайе. Все права защищены.`;
+
+        console.log('🔥 Сайт Десны Тесфайе загружен! Фиреманя!');
+    </script>
+</body>
+</html>
